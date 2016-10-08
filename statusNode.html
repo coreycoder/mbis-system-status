@@ -1,5 +1,5 @@
 <link rel="import"  href="https://polygit2.appspot.com/components/polymer/polymer.html">
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easypiechart.js"></script>
 
@@ -11,8 +11,8 @@
                 border: 2px solid slategray;
                 border-radius: 1px;
 
-                width: 300px;
-                height: 450px;
+                width: 150px;
+                height: 225px;
 
                 /*
                 width: 250px;
@@ -25,14 +25,14 @@
 
             .gauges {
                 border-bottom: 2px solid gainsboro;
-                margin: 10px;
-                padding-bottom: 20px;
+                margin: 5px;
+                padding-bottom: 10px;
             }
 
             .chart {
                 position: relative;
                 display: inline-block;
-                margin: 3px;
+                margin: 1px;
                 text-align: center;
             }
 
@@ -43,46 +43,49 @@
 
             .signal {
                 display: inline-block;
-                margin: 3px;
+                margin: 2px;
+                font-size: 10px;
             }
 
             .status {
                 text-align: center;
                 font-family: "Lucida Bright";
+                font-size: 12px;
             }
 
             .image {
                 text-align: center;
-                font-size: 2em;
+                font-size: 12px;
             }
 
             .node-name {
                 font-family: "Lucida Bright";
-                font-size: 35px;
+                font-size: 18px;
                 font-weight: lighter;
                 text-align: left;
-                margin: 5px;
-                margin-left: 10px;
-                margin-right: 5px;
+                margin: 2px;
+                margin-left: 5px;
+                margin-right: 2px;
                 border-bottom: 2px solid gainsboro;
             }
 
             .circle {
                 background: green;
                 border-radius: 50%;
-                width: 25px;
-                height: 25px;
-                margin: 10px;
+                width: 12px;
+                height: 12px;
+                margin: 5px;
                 float: left;
-                box-shadow: 0 0 5px 5px red;
+                box-shadow: 0 0 2px 2px red;
             }
 
             .percent {
                 position: absolute;
                 display: inline-block;
-                line-height: 65px;
+                line-height: 30px;
                 z-index: 2;
-                padding-left: 25px;
+                padding-left: 7px;
+                font-size: 10px;
             }
         </style>
 
@@ -99,7 +102,7 @@
                 <div class="chart" data-percent="31" data-scale-color="#ffb400">
                     <span class="percent"></span>
                 </div>
-                <div class="chart" data-percent="50" data-scale-color="#ffb400">
+                <div class="chart" data-percent="99" data-scale-color="#ffb400">
                     <span class="percent"></span>
                 </div>
 
@@ -134,7 +137,7 @@
             ready: function () {
                 $('.chart').easyPieChart({
                     animate: 2000,
-                    size: 65,
+                    size: 25,
                     barColor: function (percent) {
                         if (percent < 60)
                             return "green";
@@ -147,7 +150,7 @@
                     trackColor: false,
                     scaleColor: false,
                     scaleLength: 0,
-                    lineWidth: 6,
+                    lineWidth: 3,
                     lineCap: "butt",
                     trackWidth: 1,
                     onStep: function(from, to, percent) {
@@ -155,13 +158,16 @@
                     }
                 });
 
+                $("body").on("colorChange", function(eventName, data) {
+                    $(".circle").css("background", data);
+                    console.log("Color has been changed successfully")
+                });
+                //initHandlers()
+
             }
         });
-        $("body").on("colorChange", function(event, data) {
-            $(".circle").css("background", data);
-        });
 
-        //if ($('#your_chart').data('easyPieChart').options.barColor == '')
+       //function initHandlers() {}
 
 
     </script>

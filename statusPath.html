@@ -1,5 +1,5 @@
 <link rel="import"  href="https://polygit2.appspot.com/components/polymer/polymer.html">
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easypiechart.js"></script>
 <link rel="import" href="statusNode.html"/>
@@ -26,7 +26,7 @@
             }
         </style>
         <svg>
-            <path d$="{{mtD}}" stroke="green" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="20" stroke-dashoffset="90" fill="none" id="one"></path>
+            <path d$="{{mtD}}" stroke="green" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="20" stroke-dashoffset="90" fill="none" id="one"></path>
             <text class="text-path">
                     <textpath xlink:href="#one" startOffset="30%" id="uno">Bandwidth: 90%</textpath>
             </text>
@@ -56,7 +56,14 @@
                     $("path").css("stroke", "red");
 
                 }
-                console.log(band);
+
+                $("body").on("pathTrigger", function(event) {
+                    $("body").trigger("colorChange", ["red"]);
+                    console.log("hello how are you");
+                });
+                //initHandlers();
+
+                //console.log(band);
 
 
                 //$("mt-status-node.sixth").find(".circle").css("background", "red");
@@ -66,9 +73,9 @@
 
         });
 
-        $("body").on("pathTrigger", function(event) {
-            $("body").trigger("colorChange", ["red"]);
-        });
+        //function initHandlers() {}
+
+
 
 
     </script>
