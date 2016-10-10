@@ -64,12 +64,12 @@
         <mt-status-path id="four" mt-d="M150, 500 L470, 500"></mt-status-path>
         <mt-status-path id="five" mt-d="M150, 220 L470, 500"></mt-status-path>
 
-        <mt-status-node id="temptest" class="first ui-widget-content" mt-name="WAS" mt-image="fa fa-cloud fa-5x"></mt-status-node>
-        <mt-status-node id="temptest2" class="second ui-widget-content" mt-name="ADS" mt-image="fa fa-database fa-5x"></mt-status-node>
-        <mt-status-node id="temptest" class="third ui-widget-content" mt-name="DES" mt-image="fa fa-exchange fa-5x"></mt-status-node>
-        <mt-status-node id="temptest" class="fourth ui-widget-content" mt-name="WS" mt-image="fa fa-windows fa-5x"></mt-status-node>
-        <mt-status-node id="temptest" class="fifth ui-widget-content" mt-name="FES" mt-image="fa fa-eye fa-5x"></mt-status-node>
-        <mt-status-node id="temptest" class="sixth ui-widget-content" mt-name="MBSS" mt-image="fa fa-search fa-5x"></mt-status-node>
+        <mt-status-node id="temptest" class="first ui-widget-content" mt-name="WAS" mt-image="fa fa-cloud fa-5x" mt-color="green"></mt-status-node>
+        <mt-status-node id="temptest2" class="second ui-widget-content" mt-name="ADS" mt-image="fa fa-database fa-5x" mt-color="red"></mt-status-node>
+        <mt-status-node id="temptest" class="third ui-widget-content" mt-name="DES" mt-image="fa fa-exchange fa-5x" mt-color="green"></mt-status-node>
+        <mt-status-node id="temptest" class="fourth ui-widget-content" mt-name="WS" mt-image="fa fa-windows fa-5x" mt-color="green"></mt-status-node>
+        <mt-status-node id="temptest" class="fifth ui-widget-content" mt-name="FES" mt-image="fa fa-eye fa-5x" mt-color="green"></mt-status-node>
+        <mt-status-node id="temptest" class="sixth ui-widget-content" mt-name="MBSS" mt-image="fa fa-search fa-5x" mt-color="green"></mt-status-node>
     </template>
 
     <script type="text/javascript">
@@ -239,41 +239,25 @@
                     return hei + 100;
                 }
 
-                function startingCoordinates() {
-
-                }
-
-
                 setTimeout(function() {
-                    $("body").trigger("pathTrigger");
+                    //$("body").trigger("pathTrigger");
                     console.log("This should have triggered already");
 
+                    /*
                     $("#temptest").find(".contains").css("box-shadow", "0px 1px 10px 5px green");
                     $("#temptest2").find(".contains").css("box-shadow", "0px 1px 10px 5px green");
                     $("#temptest").find(".circle").css("background", "green");
                     $("#temptest2").find(".circle").css("background", "green");
                     $("#temptest").find(".circle").css("box-shadow", "0 0 2px 2px green");
                     $("#temptest2").find(".circle").css("box-shadow", "0 0 2px 2px green");
+                    */
 
                 }, 300);
+
+                var hahaha = $(this.$.temptest2);
+                console.log(hahaha.attr("mt-color"));
             }
         });
-        $( function() {
-
-
-
-
-            /*
-             $("body").on("pathTrigger", function(event) {
-             $("body").trigger("colorChange", ["red"]);
-             console.log("hello how are you");
-             });
-             */
-
-        });
-
-
-
     </script>
 </dom-module>
 

@@ -14,13 +14,9 @@
                 width: 150px;
                 height: 225px;
 
-                /*
-                width: 250px;
-                height: 350px;
-                */
                 float: left;
                 display: inline-block;
-                box-shadow: 0px 1px 10px 5px rgba(255, 0, 0, 1.0);
+                box-shadow: 0px 1px 10px 5px green;
             }
 
             .gauges {
@@ -34,11 +30,6 @@
                 display: inline-block;
                 margin: 1px;
                 text-align: center;
-            }
-
-            .description {
-                margin-left: 50px;
-                margin-top: 50px;
             }
 
             .signal {
@@ -76,7 +67,7 @@
                 height: 12px;
                 margin: 5px;
                 float: left;
-                box-shadow: 0 0 2px 2px red;
+                box-shadow: 0 0 2px 2px green;
             }
 
             .percent {
@@ -89,15 +80,14 @@
             }
         </style>
 
-        <div class="contains">
+        <div class="contains" name$="[[mtColor]]" id="testing">
             <div class="circle"></div>
             <div class="node-name">
-                <span>{{mtName}}</span>
+                <span>[[mtName]]</span>
             </div>
             <div class="gauges">
                 <div class="chart" data-percent="73" data-scale-color="#152937">
                     <span class="percent"></span>
-                    <!--<span class="description">CPU</span>-->
                 </div>
                 <div class="chart" data-percent="31" data-scale-color="#ffb400">
                     <span class="percent"></span>
@@ -132,6 +122,10 @@
                 mtImage: {
                     type: String,
                     notify: true
+                },
+                mtColor: {
+                    type: String,
+                    notify: true
                 }
             },
             ready: function () {
@@ -145,7 +139,6 @@
                             return "yellow";
                         else
                             return "red";
-                        //return (percent < 50 ? '#5cb85c' : percent < 85 ? '#f0ad4e' : '#cb3935');
                     },
                     trackColor: false,
                     scaleColor: false,
@@ -163,6 +156,20 @@
                     console.log("Color has been changed successfully")
                 });
                 //initHandlers()
+
+                function changeColor() {
+                    var hehehe = $(this.$.testing);
+                    var temp = hehehe.attr("name");
+                    console.log(temp);
+                    var shadow = "0px 1px 10px 5px " + temp;
+                    $(".contains").css("box-shadow", shadow);;
+                    shadow = "0 0 2px 2px " + temp;
+                    $(".circle").css("box-shadow", shadow);
+                    $(".circle").css("background", temp);
+
+                }
+                changeColor();
+
 
             }
         });
