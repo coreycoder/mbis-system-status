@@ -1,48 +1,48 @@
 <link rel="import"  href="https://polygit2.appspot.com/components/polymer/polymer.html">
-<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easypiechart.js"></script>
-<link rel="import" href="statusNode.html"/>
-<link rel="import" href="statusPath.html"/>
-<link type="text/css" rel="stylesheet" href="../css/jquery-ui.css" />
-<script src="../js/jquery-ui.js"></script>
+<link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easypiechart.js"></script>
+<link rel="import" href="../status-node/status-node.html"/>
+<link rel="import" href="../status-path/status-path.html"/>
+<link type="text/css" rel="stylesheet" href="../../css/jquery-ui.css" />
+<script src="../../js/jquery-ui.js"></script>
 
-<dom-module id="mt-system-status">
+<dom-module id="mt-central-site">
     <template>
         <style>
             .first {
                 left: 400px;
-                top: 400px;
+                top: 340px;
                 position: absolute;
             }
 
             .second {
                 left: 80px;
-                top: 750px;
+                top: 610px;
                 position: absolute;
             }
 
             .third {
-                left: 700px;
+                left: 660px;
                 top: 150px;
                 position: absolute;
             }
 
             .fourth {
-                left: 700px;
+                left: 660px;
                 top: 600px;
                 position: absolute;
             }
 
             .fifth {
                 left: 80px;
-                top: 400px;
+                top: 340px;
                 position: absolute;
             }
 
             .sixth {
                 left: 80px;
-                top: 120px;
+                top: 80px;
                 position: absolute;
             }
 
@@ -57,25 +57,44 @@
                 top: 0;
                 left: 0;
             }
-        </style>
-        <mt-status-path id="one" mt-d="M150, 850 L470, 500"></mt-status-path>
-        <mt-status-path id="two" mt-d="M770, 250 L470, 500"></mt-status-path>
-        <mt-status-path id="three" mt-d="M770, 700 L470, 500"></mt-status-path>
-        <mt-status-path id="four" mt-d="M150, 500 L470, 500"></mt-status-path>
-        <mt-status-path id="five" mt-d="M150, 220 L470, 500"></mt-status-path>
 
-        <mt-status-node id="temptest" class="first ui-widget-content" mt-name="WAS" mt-image="fa fa-cloud fa-5x" mt-color="green"></mt-status-node>
-        <mt-status-node id="temptest2" class="second ui-widget-content" mt-name="ADS" mt-image="fa fa-database fa-5x" mt-color="red"></mt-status-node>
-        <mt-status-node id="temptest" class="third ui-widget-content" mt-name="DES" mt-image="fa fa-exchange fa-5x" mt-color="green"></mt-status-node>
-        <mt-status-node id="temptest" class="fourth ui-widget-content" mt-name="WS" mt-image="fa fa-windows fa-5x" mt-color="green"></mt-status-node>
-        <mt-status-node id="temptest" class="fifth ui-widget-content" mt-name="FES" mt-image="fa fa-eye fa-5x" mt-color="green"></mt-status-node>
-        <mt-status-node id="temptest" class="sixth ui-widget-content" mt-name="MBSS" mt-image="fa fa-search fa-5x" mt-color="green"></mt-status-node>
+            .central {
+                background: gainsboro;
+                width: 900px;
+                height: 850px;
+                border: 4px solid slategray;
+            }
+
+            .title {
+                font-size: 50px;
+                letter-spacing: 5px;
+                width: 100%;
+                text-align: center;
+            }
+        </style>
+        <div class="central">
+            <div class="title">
+                Central Site
+            </div>
+            <mt-status-path id="one" mt-d="M155, 720 L475, 450" mt-status="good"></mt-status-path>
+            <mt-status-path id="two" mt-d="M735, 260 L475, 450" mt-status="okay"></mt-status-path>
+            <mt-status-path id="three" mt-d="M735, 710 L475, 450" mt-status="bad"></mt-status-path>
+            <mt-status-path id="four" mt-d="M155, 450 L475, 450" mt-status="good"></mt-status-path>
+            <mt-status-path id="five" mt-d="M155, 190 L475, 450" mt-status="okay"></mt-status-path>
+
+            <mt-status-node id="temptest" class="first ui-widget-content" mt-name="WAS" mt-image="fa fa-cloud fa-5x" mt-status="good"></mt-status-node>
+            <mt-status-node id="temptest2" class="second ui-widget-content" mt-name="ADS" mt-image="fa fa-database fa-5x" mt-status="okay"></mt-status-node>
+            <mt-status-node id="temptest" class="third ui-widget-content" mt-name="DES" mt-image="fa fa-exchange fa-5x" mt-status="bad"></mt-status-node>
+            <mt-status-node id="temptest" class="fourth ui-widget-content" mt-name="WS" mt-image="fa fa-windows fa-5x" mt-status="good"></mt-status-node>
+            <mt-status-node id="temptest" class="fifth ui-widget-content" mt-name="FES" mt-image="fa fa-eye fa-5x" mt-status="okay"></mt-status-node>
+            <mt-status-node id="temptest" class="sixth ui-widget-content" mt-name="MBSS" mt-image="fa fa-search fa-5x" mt-status="bad"></mt-status-node>
+        </div>
     </template>
 
     <script type="text/javascript">
 
         Polymer({
-            is: "mt-system-status",
+            is: "mt-central-site",
             properties: {
                 mtName: {
                     type: String,
@@ -243,19 +262,22 @@
                     //$("body").trigger("pathTrigger");
                     console.log("This should have triggered already");
 
-                    /*
-                    $("#temptest").find(".contains").css("box-shadow", "0px 1px 10px 5px green");
-                    $("#temptest2").find(".contains").css("box-shadow", "0px 1px 10px 5px green");
-                    $("#temptest").find(".circle").css("background", "green");
-                    $("#temptest2").find(".circle").css("background", "green");
-                    $("#temptest").find(".circle").css("box-shadow", "0 0 2px 2px green");
-                    $("#temptest2").find(".circle").css("box-shadow", "0 0 2px 2px green");
-                    */
+
+                    //$("#temptest").find(".contains").css("box-shadow", "0px 1px 10px 5px green");
+                   // $("#temptest2").find(".contains").css("box-shadow", "0px 1px 10px 5px red");
+                    //$("#temptest").find(".circle").css("background", "green");
+                    //$("#temptest2").find(".circle").css("background", "red");
+                    //$("#temptest").find(".circle").css("box-shadow", "0 0 2px 2px green");
+                    //$("#temptest2").find(".circle").css("box-shadow", "0 0 2px 2px red");
+                    //$("#two").find("path").css("stroke", "red");
+
+
+                    var hahaha = $(this.$.temptest2);
+                    console.log(hahaha.attr("mt-color"));
 
                 }, 300);
 
-                var hahaha = $(this.$.temptest2);
-                console.log(hahaha.attr("mt-color"));
+
             }
         });
     </script>

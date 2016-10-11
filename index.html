@@ -5,29 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.easypiechart.js"></script>
-    <link rel="import" href="polymer-components/statusNode.html"/>
-    <link rel="import" href="polymer-components/statusPath.html"/>
-    <link rel="import" href="polymer-components/systemStatus.html"/>
+    <link rel="import"  href="https://polygit2.appspot.com/components/polymer/polymer.html">
+    <link rel="import" href="polymer-components/central-site/central-site.html"/>
+    <link rel="import" href="polymer-components/remote-site/remote-site.html"/>
     <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
     <script src="js/jquery-ui.js"></script>
-
 </head>
 <body>
     <style>
-        html, body, svg {
+        html, body {
             width: 1920px;
             height: 1500px;
+        }
+
+        svg {
+            width: 900px;
+            height: 850px;
         }
 
         body {
             margin: 0;
             color: #73879C;
-            background: gainsboro;
+        }
 
+        .original {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .single {
+            position: absolute;
+            left: 1200px;
+            top: 0;
+        }
+
+        .double {
+            position: absolute;
+            left: 1200px;
+            top: 440px;
         }
     </style>
-    <mt-system-status></mt-system-status>
+
+    <mt-central-site class="original"></mt-central-site>
+    <mt-remote-site class="single"></mt-remote-site>
+    <mt-remote-site class="double"></mt-remote-site>
+
+
 </body>
 </html>

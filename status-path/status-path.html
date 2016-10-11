@@ -1,17 +1,35 @@
 <link rel="import"  href="https://polygit2.appspot.com/components/polymer/polymer.html">
-<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easypiechart.js"></script>
-<link rel="import" href="statusNode.html"/>
+<link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="../../js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easypiechart.js"></script>
+<link rel="import" href="../status-node/status-node.html"/>
+<script src="../../js/jquery-ui.js"></script>
 
 <dom-module id="mt-status-path">
     <template>
         <style>
-            path {
+            .good {
+                animation-name: moving;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-duration: 25s;
+                stroke: green;
+            }
+
+            .okay {
                 animation-name: moving;
                 animation-timing-function: linear;
                 animation-iteration-count: infinite;
                 animation-duration: 50s;
+                stroke: yellow;
+            }
+
+            .bad {
+                animation-name: moving;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-duration: 0s;
+                stroke: red;
             }
 
             @keyframes moving {
@@ -26,10 +44,11 @@
             }
         </style>
         <svg>
-            <path d$="{{mtD}}" stroke="green" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="20" stroke-dashoffset="90" fill="none" id="one"></path>
+            <path d$="{{mtD}}" class$="[[mtStatus]]" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="20" stroke-dashoffset="90" fill="none" id="one"></path>
             <text class="text-path">
-                    <textpath xlink:href="#one" startOffset="30%" id="uno">Bandwidth: 90%</textpath>
+                <textpath xlink:href="#one" startOffset="30%" id="uno">Bandwidth: 90%</textpath>
             </text>
+
         </svg>
 
     </template>
@@ -40,7 +59,12 @@
                 mtD: {
                     type: String,
                     notify: true
+                },
+                mtStatus: {
+                    type: String,
+                    notify: true
                 }
+
             },
             ready: function () {
                 var band = $("textpath").text();
