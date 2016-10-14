@@ -40,19 +40,20 @@
             .text-path {
                 font-family: Helvetica;
                 font-size: 30px;
-                padding: 20px;
             }
         </style>
-        <svg>
-            <path d$="{{mtD}}" class$="[[mtStatus]]" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="20" stroke-dashoffset="90" fill="none" id="one"></path>
-            <text class="text-path">
-                <textpath xlink:href="#one" startOffset="30%" id="uno">Bandwidth: 90%</textpath>
-            </text>
-
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path d$="{{mtD}}" class$="[[mtStatus]]" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="20" stroke-dashoffset="90" fill="none" id="one"></path>
+                <foreignObject>
+                    <text class="text-path">
+                        <textPath xlink:href="#one" startOffset="50%" id="uno">Bandwidth: 90%</textPath>
+                    </text>
+                </foreignObject>
         </svg>
-
     </template>
     <script>
+        //xlink:href="#one" startOffset="50%"
+        //xmlns="http://www.w3.org/1999/xhtml"
         Polymer({
             is: "mt-status-path",
             properties: {
@@ -68,6 +69,7 @@
             },
             ready: function () {
                 var band = $("textpath").text();
+                console.log(band + "this still isnt working");
                 band =  parseInt(band.substring(11, band.length - 1));
                 if (band < 60) {
                     $("path").css("stroke", "green");
@@ -85,6 +87,13 @@
                     $("body").trigger("colorChange", ["red"]);
                     console.log("hello how are you");
                 });
+
+                setTimeout(function() {
+                    $("textpath").toggle().toggle();
+                    var band = $("textpath").text();
+                    console.log(band);
+                    //$("#one").load(location.href + " #one");
+                }, 1000);
                 //initHandlers();
 
                 //console.log(band);
